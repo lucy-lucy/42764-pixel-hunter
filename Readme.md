@@ -1,7 +1,7 @@
 # Личный проект «Пиксель хантер» [![Build status][travis-image]][travis-url]
 
 * Студент: [Людмила Котляр](https://up.htmlacademy.ru/ecmascript/4/user/42764).
-* Наставник: `Неизвестно`.
+* Наставник: `Отсутствует`.
 
 ---
 
