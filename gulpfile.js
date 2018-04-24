@@ -15,15 +15,6 @@ const rollup = require('gulp-better-rollup');
 const sourcemaps = require('gulp-sourcemaps');
 const mocha = require('gulp-mocha'); // Добавим установленный gulp-mocha плагин
 
-gulp.task('test', function () {
-  return gulp
-    .src(['js/**/*.test.js'], { read: false })
-    .pipe(mocha({
-      compilers: ['js:babel-register'], // Включим поддержку "import/export" в Mocha тестах
-      reporter: 'spec'       // Вид в котором я хочу отображать результаты тестирования
-    }));
-});
-
 gulp.task('style', function () {
   return gulp.src('sass/style.scss')
     .pipe(plumber())
@@ -54,9 +45,6 @@ gulp.task('scripts', function () {
     .pipe(rollup({}, 'iife'))
     .pipe(sourcemaps.write(''))
     .pipe(gulp.dest('build/js'));
-});
-
-gulp.task('test', function () {
 });
 
 gulp.task('imagemin', ['copy'], function () {
@@ -116,4 +104,13 @@ gulp.task('assemble', ['clean'], function () {
 
 gulp.task('build', ['assemble'], function () {
   gulp.start('imagemin');
+});
+
+gulp.task('test', function () {
+  return gulp
+    .src(['js/**/*.test.js'], { read: false })
+    .pipe(mocha({
+      compilers: ['js:babel-register'], // Включим поддержку "import/export" в Mocha тестах
+      reporter: 'spec'       // Вид в котором я хочу отображать результаты тестирования
+    }));
 });
